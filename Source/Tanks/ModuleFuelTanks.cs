@@ -324,7 +324,9 @@ namespace RealFuels.Tanks
                 totalVolume = volume * 100d / utilization;
             }
         }
-
+		private string Getinfo1 = Localizer.Format("#MFT_UI_GetInfo1");
+		private string Getinfo2 = Localizer.Format("#MFT_UI_GetInfo2");
+		private string Getinfo3 = Localizer.Format("#MFT_UI_GetInfo3");
         public override string GetInfo ()
 		{
 			if (!compatible) {
@@ -334,9 +336,9 @@ namespace RealFuels.Tanks
 			UpdateTankType ();
 
 			StringBuilder info = new StringBuilder ();
-			info.AppendLine ("Modular Fuel Tank:");//
-			info.Append ("	Max Volume: ").AppendLine (KSPUtil.PrintSI (volume, MFSSettings.unitLabel));//
-			info.AppendLine ("	Tank can hold:");//
+			info.AppendLine (Getinfo1 + ":");//"Modular Fuel Tank"
+			info.Append("	" + Getinfo2 + " ").AppendLine(KSPUtil.PrintSI(volume, MFSSettings.unitLabel));//Max Volume:
+			info.AppendLine ("	" + Getinfo3);//Tank can hold:
 			for (int i = 0; i < tankList.Count; i++) {
 				FuelTank tank = tankList[i];
 				info.Append ("		").Append (tank).Append (" ").AppendLine (tank.note);
@@ -346,8 +348,8 @@ namespace RealFuels.Tanks
 
 		public string GetPrimaryField ()
 		{
-			return String.Format ("Max Volume: {0}, {1}{2}",//
-							KSPUtil.PrintSI (volume, MFSSettings.unitLabel),
+			return Getinfo2 + String.Format(" {0}, {1}{2}",//Max Volume
+							KSPUtil.PrintSI(volume, MFSSettings.unitLabel),
 							type,
 							(typesAvailable != null && typesAvailable.Count() > 1) ? "*" : "");
 		}
@@ -359,7 +361,7 @@ namespace RealFuels.Tanks
 
 		public string GetModuleTitle ()
 		{
-			return "Modular Fuel Tank";
+			return Getinfo1;//"Modular Fuel Tank"
 		}
 
 		void OnActionGroupEditorOpened ()
