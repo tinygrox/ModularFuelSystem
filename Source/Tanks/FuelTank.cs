@@ -31,6 +31,8 @@ namespace RealFuels.Tanks
 		[Persistent]
 		public string name = "UnknownFuel";
 		[Persistent]
+		public string displayName = "";
+		[Persistent]
 		public string note = "";
       
         public string boiloffProduct = "";
@@ -442,10 +444,16 @@ namespace RealFuels.Tanks
 		//------------------- implicit type conversions
 		public override string ToString ()
 		{
-			if (name == null) {
+			if (name == null)
+			{
 				return "NULL";
 			}
-			return name;
+			else if (displayName == "")
+			{
+				return name;
+			}
+			else
+				return displayName;
 		}
 
 		//------------------- IConfigNode implementation

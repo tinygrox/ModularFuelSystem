@@ -353,7 +353,7 @@ namespace RealFuels.Tanks
 
 		void AddTank (FuelTank tank)
 		{
-			GUILayout.Label ("’‚¿Ô?" + addLabelCache[tank.name], GUILayout.Width (150));//
+			GUILayout.Label (addLabelCache[tank.name], GUILayout.Width (150));
 
 			if (GUILayout.Button (UI_Addbtn, GUILayout.Width (120))) {//"Add"
 				tank.maxAmount = tank_module.AvailableVolume * tank.utilization;

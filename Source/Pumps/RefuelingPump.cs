@@ -6,13 +6,14 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using KSP;
+using KSP.Localization;
 
 namespace RealFuels
 {
     public class RefuelingPump : PartModule, IAnalyticPreview
     {
-        [KSPField(isPersistant = true, guiActive = true, guiActiveEditor = true, guiName = "Fuel Pump")]
-        [UI_Toggle(affectSymCounterparts = UI_Scene.Editor, disabledText = "Disabled", enabledText = "Enabled")]
+        [KSPField(isPersistant = true, guiActive = true, guiActiveEditor = true, guiName = "#MFT_UI_FuelPump")]//Fuel Pump
+        [UI_Toggle(affectSymCounterparts = UI_Scene.Editor, disabledText = "#MFT_UI_FuelPump_Disabled", enabledText = "#MFT_UI_FuelPump_Enabled")]//Disabled""Enabled
         bool enablePump = true;
 
         [KSPField(isPersistant = true)]
@@ -22,7 +23,7 @@ namespace RealFuels
 
         public override string GetInfo ()
         {
-            return "\nPump rate: " + pump_rate + "/s";
+            return "\n" + Localizer.Format("#MFT_UI_PumpRateInfo", pump_rate);//Pump rate: " +  + "/s"
         }
 
 		public override void OnStart(PartModule.StartState state)

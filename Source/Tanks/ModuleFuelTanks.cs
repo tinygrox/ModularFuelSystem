@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Reflection;
 
 using KSP.UI.Screens;
+using KSP.Localization;
 
 // ReSharper disable InconsistentNaming, CompareOfFloatsByEqualityOperator
 
@@ -668,7 +669,7 @@ namespace RealFuels.Tanks
 		// The total tank volume. This is prior to utilization
 		public double totalVolume;
 
-		[KSPField (isPersistant = true, guiActive = false, guiActiveEditor = true, guiName = "Utilization", guiUnits = "%", guiFormat = "F0"),//
+		[KSPField (isPersistant = true, guiActive = false, guiActiveEditor = true, guiName = "#MFT_UI_Utilization", guiUnits = "%", guiFormat = "F0"),//Utilization
 		 UI_FloatRange (minValue = 1, maxValue = 100, stepIncrement = 1, scene = UI_Scene.Editor)]
 		public float utilization = -1;
 		private float oldUtilization = -1;
@@ -685,7 +686,7 @@ namespace RealFuels.Tanks
 		// no double support for KSPFields - [KSPField (isPersistant = true)]
 		public double volume;
 
-		[KSPField (isPersistant = false, guiActive = false, guiActiveEditor = true, guiName = "Volume")]//
+		[KSPField (isPersistant = false, guiActive = false, guiActiveEditor = true, guiName = "#MFT_UI_Volume")]//Volume
 		public string volumeDisplay;
 
 		public double UsedVolume
@@ -797,7 +798,7 @@ namespace RealFuels.Tanks
 		public float mass;
 		internal bool massDirty = true;
 
-		[KSPField (isPersistant = false, guiActive = false, guiActiveEditor = true, guiName = "Mass")]
+		[KSPField (isPersistant = false, guiActive = false, guiActiveEditor = true, guiName = "#MFT_UI_Mass")]//Mass
 		public string massDisplay;
 
 		// public so they copy
@@ -872,8 +873,11 @@ namespace RealFuels.Tanks
 				baseCostPV = defaultBaseCostPV;
 			}
 		}
-
-        public void CalculateMass ()
+		private string UI_Avail = Localizer.Format("#MFT_UI_Avail");
+		private string UI_Tot = Localizer.Format("#MFT_UI_Total");
+		private string UI_Dry = Localizer.Format("#MFT_UI_Dry");
+		private string UI_Wet = Localizer.Format("#MFT_UI_Wet");
+		public void CalculateMass ()
 		{
 			if (tankList == null || !massDirty)
             {
@@ -922,12 +926,12 @@ namespace RealFuels.Tanks
                     availRounded = 0d;
 				string availVolStr = KSPUtil.PrintSI (availRounded, MFSSettings.unitLabel);
 				string volStr = KSPUtil.PrintSI (volume, MFSSettings.unitLabel);
-				volumeDisplay = "Avail: " + availVolStr + " / Tot: " + volStr;//
+				volumeDisplay = UI_Avail + ": " + availVolStr + " / " + UI_Tot + ": " + volStr;//Avail//Tot
 
 				double resourceMass = part.Resources.Cast<PartResource> ().Sum (partResource => partResource.maxAmount* partResource.info.density);
 
 				double wetMass = mass + resourceMass;
-				massDisplay = "Dry: " + FormatMass (mass) + " / Wet: " + FormatMass ((float)wetMass);//
+				massDisplay = UI_Dry + ": " + FormatMass(mass) + " / " + UI_Wet + ": " + FormatMass((float)wetMass);//Dry//Wet
 
 				UpdateTweakableMenu ();
 			}
@@ -1028,14 +1032,14 @@ namespace RealFuels.Tanks
 			massDirty = true;
 		}
 
-		[KSPEvent (guiActiveEditor = true, guiName = "Hide Tank UI", active = false)]//
+		[KSPEvent (guiActiveEditor = true, guiName = "#MFT_UI_HideUI", active = false)]//Hide Tank UI
 		public void HideUI ()
 		{
 			TankWindow.HideGUI ();
 			UpdateMenus (false);
 		}
 
-		[KSPEvent (guiActiveEditor = true, guiName = "Show Tank UI", active = false)]//
+		[KSPEvent (guiActiveEditor = true, guiName = "#MFT_UI_ShowUI", active = false)]//Show Tank UI
 		public void ShowUI ()
 		{
 			TankWindow.ShowGUI (this);
@@ -1048,7 +1052,7 @@ namespace RealFuels.Tanks
 			Events["ShowUI"].active = !visible;
 		}
 
-		[KSPEvent (guiName = "Remove All Tanks", guiActive = false, guiActiveEditor = true, name = "Empty")]//
+		[KSPEvent (guiName = "#MFT_UI_RemoveAllTanks", guiActive = false, guiActiveEditor = true, name = "Empty")]//Remove All Tanks
 		public void Empty ()
 		{
 			for (int i = 0; i < tankList.Count; i++) {

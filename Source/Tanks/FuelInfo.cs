@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using System.Collections.ObjectModel;
+using KSP.Localization;
 
 // ReSharper disable InconsistentNaming, CompareOfFloatsByEqualityOperator
 
@@ -11,6 +12,7 @@ namespace RealFuels.Tanks
 {
 	internal class FuelInfo
 	{
+		private string UI_EnginesUsed = Localizer.Format("#MFT_UI_EnginesUsed");
 		public string names;
 		public readonly List<Propellant> propellants;
 		public readonly double efficiency;
@@ -65,7 +67,7 @@ namespace RealFuels.Tanks
 					}
 				}
 			}
-			names = "Used by: " + title;//
+			names = UI_EnginesUsed + " " + title;//"Used by: " + title
 		}
 	}
 }
