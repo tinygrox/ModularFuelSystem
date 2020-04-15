@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modularFuelTanks", "modularFuelTanks.csproj", "{0041813D-DCD1-4AC7-8327-85765BF924A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modularFuelTanks", "modularFuelTanks.csproj", "{9EA86296-8342-4112-81F3-438C9333E284}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweakScale_ModularFuelTanks", "TweakScale_ModularFuelTanks.csproj", "{F8D41CCB-BF60-4E9F-946D-6E19D0260175}"
 EndProject
@@ -13,10 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0041813D-DCD1-4AC7-8327-85765BF924A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0041813D-DCD1-4AC7-8327-85765BF924A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0041813D-DCD1-4AC7-8327-85765BF924A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0041813D-DCD1-4AC7-8327-85765BF924A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA86296-8342-4112-81F3-438C9333E284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA86296-8342-4112-81F3-438C9333E284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA86296-8342-4112-81F3-438C9333E284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA86296-8342-4112-81F3-438C9333E284}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F8D41CCB-BF60-4E9F-946D-6E19D0260175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F8D41CCB-BF60-4E9F-946D-6E19D0260175}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8D41CCB-BF60-4E9F-946D-6E19D0260175}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -24,6 +24,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8D32005-04F1-4E99-8B2D-4EB861400697}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = modularFuelTanks.csproj

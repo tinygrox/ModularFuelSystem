@@ -9,8 +9,8 @@
     <OutputType>Library</OutputType>
     <RootNamespace>modularFuelTanks</RootNamespace>
     <AssemblyName>modularFuelTanks</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -32,34 +32,61 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="AssemblyInfoMFT.cs" />
-    <Compile Include="HeatPump.cs" />
-    <Compile Include="MFSSettings.cs" />
-    <Compile Include="ModularFuelPartModule.cs" />
-    <Compile Include="ModularFuelTanks.cs" />
-    <Compile Include="RefuelingPump.cs" />
-    <Compile Include="VersionReport.cs" />
+    <Compile Include="assembly\AssemblyInfoMFT.cs" />
+    <Compile Include="assembly\Checkers.cs" />
+    <Compile Include="assembly\VersionReport.cs" />
+    <Compile Include="EditorToolbar.cs" />
+    <Compile Include="Pumps\RefuelingPump.cs" />
+    <Compile Include="Tanks\FuelInfo.cs" />
+    <Compile Include="Tanks\FuelTank.cs" />
+    <Compile Include="Tanks\FuelTankList.cs" />
+    <Compile Include="Tanks\MFSSettings.cs" />
+    <Compile Include="Tanks\ModuleFuelTanks.cs" />
+    <Compile Include="Tanks\TankDefinition.cs" />
+    <Compile Include="Tanks\TankDefinitionList.cs" />
+    <Compile Include="Tanks\TankWindow.cs" />
+    <Compile Include="Utilities\Styles.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\Games\KSP 0.23 Real Life\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\Games\KSP 0.23 Real Life\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\KSPAPIExtensions\Source\KSPAPIExtensions.csproj">
-      <Project>{4282b0da-c314-4524-9c32-edab2c9666a9}</Project>
-      <Name>KSPAPIExtensions</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
-    <PreBuildEvent>cd $(ProjectDir)
-sh git-version-mft.sh</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy /y "$(TargetPath)" "$(SolutionDir)\..\ModularFuelTanks\Plugins\"
-if exist "$(SolutionDir)\KSPAPIExtensions.dll" copy /y "$(SolutionDir)\KSPAPIExtensions.dll"  "$(SolutionDir)\..\ModularFuelTanks\Plugins\"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
