@@ -333,9 +333,9 @@ namespace RealFuels.Tanks
 			UpdateTankType ();
 
 			StringBuilder info = new StringBuilder ();
-			info.AppendLine ("Modular Fuel Tank:");
-			info.Append ("	Max Volume: ").AppendLine (KSPUtil.PrintSI (volume, MFSSettings.unitLabel));
-			info.AppendLine ("	Tank can hold:");
+			info.AppendLine ("Modular Fuel Tank:");//
+			info.Append ("	Max Volume: ").AppendLine (KSPUtil.PrintSI (volume, MFSSettings.unitLabel));//
+			info.AppendLine ("	Tank can hold:");//
 			for (int i = 0; i < tankList.Count; i++) {
 				FuelTank tank = tankList[i];
 				info.Append ("		").Append (tank).Append (" ").AppendLine (tank.note);
@@ -345,7 +345,7 @@ namespace RealFuels.Tanks
 
 		public string GetPrimaryField ()
 		{
-			return String.Format ("Max Volume: {0}, {1}{2}",
+			return String.Format ("Max Volume: {0}, {1}{2}",//
 							KSPUtil.PrintSI (volume, MFSSettings.unitLabel),
 							type,
 							(typesAvailable != null && typesAvailable.Count() > 1) ? "*" : "");
@@ -530,7 +530,7 @@ namespace RealFuels.Tanks
 		// The active fuel tanks. This will be the list from the tank type, with any overrides from the part file.
 		internal FuelTankList tankList = new FuelTankList ();
 
-		[KSPField (isPersistant = true, guiActive = false, guiActiveEditor = true, guiName = "Tank Type"), UI_ChooseOption (scene = UI_Scene.Editor)]
+		[KSPField (isPersistant = true, guiActive = false, guiActiveEditor = true, guiName = "#MFT_UI_TankType"), UI_ChooseOption (scene = UI_Scene.Editor)]//Tank Type
 		public string type = "Default";
 		private string oldType;
 
@@ -668,7 +668,7 @@ namespace RealFuels.Tanks
 		// The total tank volume. This is prior to utilization
 		public double totalVolume;
 
-		[KSPField (isPersistant = true, guiActive = false, guiActiveEditor = true, guiName = "Utilization", guiUnits = "%", guiFormat = "F0"),
+		[KSPField (isPersistant = true, guiActive = false, guiActiveEditor = true, guiName = "Utilization", guiUnits = "%", guiFormat = "F0"),//
 		 UI_FloatRange (minValue = 1, maxValue = 100, stepIncrement = 1, scene = UI_Scene.Editor)]
 		public float utilization = -1;
 		private float oldUtilization = -1;
@@ -685,7 +685,7 @@ namespace RealFuels.Tanks
 		// no double support for KSPFields - [KSPField (isPersistant = true)]
 		public double volume;
 
-		[KSPField (isPersistant = false, guiActive = false, guiActiveEditor = true, guiName = "Volume")]
+		[KSPField (isPersistant = false, guiActive = false, guiActiveEditor = true, guiName = "Volume")]//
 		public string volumeDisplay;
 
 		public double UsedVolume
@@ -922,12 +922,12 @@ namespace RealFuels.Tanks
                     availRounded = 0d;
 				string availVolStr = KSPUtil.PrintSI (availRounded, MFSSettings.unitLabel);
 				string volStr = KSPUtil.PrintSI (volume, MFSSettings.unitLabel);
-				volumeDisplay = "Avail: " + availVolStr + " / Tot: " + volStr;
+				volumeDisplay = "Avail: " + availVolStr + " / Tot: " + volStr;//
 
 				double resourceMass = part.Resources.Cast<PartResource> ().Sum (partResource => partResource.maxAmount* partResource.info.density);
 
 				double wetMass = mass + resourceMass;
-				massDisplay = "Dry: " + FormatMass (mass) + " / Wet: " + FormatMass ((float)wetMass);
+				massDisplay = "Dry: " + FormatMass (mass) + " / Wet: " + FormatMass ((float)wetMass);//
 
 				UpdateTweakableMenu ();
 			}
@@ -1028,14 +1028,14 @@ namespace RealFuels.Tanks
 			massDirty = true;
 		}
 
-		[KSPEvent (guiActiveEditor = true, guiName = "Hide Tank UI", active = false)]
+		[KSPEvent (guiActiveEditor = true, guiName = "Hide Tank UI", active = false)]//
 		public void HideUI ()
 		{
 			TankWindow.HideGUI ();
 			UpdateMenus (false);
 		}
 
-		[KSPEvent (guiActiveEditor = true, guiName = "Show Tank UI", active = false)]
+		[KSPEvent (guiActiveEditor = true, guiName = "Show Tank UI", active = false)]//
 		public void ShowUI ()
 		{
 			TankWindow.ShowGUI (this);
@@ -1048,7 +1048,7 @@ namespace RealFuels.Tanks
 			Events["ShowUI"].active = !visible;
 		}
 
-		[KSPEvent (guiName = "Remove All Tanks", guiActive = false, guiActiveEditor = true, name = "Empty")]
+		[KSPEvent (guiName = "Remove All Tanks", guiActive = false, guiActiveEditor = true, name = "Empty")]//
 		public void Empty ()
 		{
 			for (int i = 0; i < tankList.Count; i++) {
